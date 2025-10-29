@@ -316,7 +316,9 @@ Widget serviceDetials(BuildContext context) {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  bottomSheet(context);
+                },
                 style: TextButton.styleFrom(
                   foregroundColor: Color.fromRGBO(
                     5,

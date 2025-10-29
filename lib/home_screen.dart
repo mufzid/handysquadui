@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return workerType();
+                    return workerType(index);
                   },
                 ),
               ),
@@ -275,8 +275,9 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-Widget workerType() {
+Widget workerType(int index) {
   return Container(
+    margin: EdgeInsets.only(left: index == 0 ? 18 : 0),
     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
     decoration: BoxDecoration(
       color: const Color.fromARGB(255, 247, 246, 246),
