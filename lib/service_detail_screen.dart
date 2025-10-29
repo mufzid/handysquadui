@@ -15,7 +15,12 @@ class ServiceDetailScreen extends StatelessWidget {
         leadingWidth: 60,
         leading: Padding(
           padding: const EdgeInsets.only(left: 18.0),
-          child: iconWidget(Icon(Icons.arrow_back_ios_outlined, size: 20)),
+          child: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: iconWidget(Icon(Icons.arrow_back_ios_outlined, size: 20)),
+          ),
         ),
         actions: [
           iconWidget(Icon(Icons.search_sharp, size: 22)),

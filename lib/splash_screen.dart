@@ -1,7 +1,21 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/login');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +30,10 @@ class SplashScreen extends StatelessWidget {
               children: [Image.asset('assets/images/Logo.png')],
             ),
           ),
-          Align(
+          const Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 18.0),
+              padding: EdgeInsets.only(bottom: 18.0),
               child: Text(
                 'App Version V1.0.1',
                 style: TextStyle(color: Colors.grey, fontSize: 12),

@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                     itemCount: 5,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return serviceType();
+                      return serviceType(context);
                     },
                   ),
                 ),
@@ -262,13 +262,31 @@ class HomeScreen extends StatelessWidget {
                     itemCount: 5,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return serviceType();
+                      return serviceType(context);
                     },
                   ),
                 ),
               ),
             ],
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black, // 👈 black background
+          selectedItemColor: Colors.white, // white for selected icons
+          unselectedItemColor: Colors.grey, // grey for unselected icons
+          type: BottomNavigationBarType.fixed, // keeps colors consistent
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month),
+              label: 'Services',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+          ],
         ),
       ),
     );
@@ -362,45 +380,50 @@ Widget gradientWidget() {
   );
 }
 
-Widget serviceType() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Container(
-        height: 160,
-        width: 190,
-        // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 247, 246, 246),
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage('assets/images/deepclean.jpg'),
-          ),
-        ),
-      ),
-      SizedBox(height: 5),
-      Text(
-        'Deep Cleaning ',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      Row(
-        children: [
-          Icon(Icons.star, color: Colors.amber, size: 18),
-          Text(
-            '4.95',
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w400,
-              color: const Color.fromARGB(255, 87, 87, 87),
+Widget serviceType(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.pushNamed(context, '/service-detail');
+    },
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 160,
+          width: 190,
+          // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 247, 246, 246),
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/deepclean.jpg'),
             ),
           ),
-        ],
-      ),
-    ],
+        ),
+        SizedBox(height: 5),
+        Text(
+          'Deep Cleaning ',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Row(
+          children: [
+            Icon(Icons.star, color: Colors.amber, size: 18),
+            Text(
+              '4.95',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w400,
+                color: const Color.fromARGB(255, 87, 87, 87),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
   );
 }

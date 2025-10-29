@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:handysqaud_user_app/home_screen.dart';
+import 'package:handysqaud_user_app/login_screen.dart';
+import 'package:handysqaud_user_app/service_detail_screen.dart';
+import 'package:handysqaud_user_app/splash_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +16,13 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'ZalandoSansSemiExpanded'),
-      home: HomeScreen(),
+      routes: {
+        '/home': (context) => HomeScreen(),
+        '/service-detail': (context) => ServiceDetailScreen(),
+        '/login': (context) => LoginScreen(),
+        '/splash': (context) => SplashScreen(),
+      },
+      home: SplashScreen(),
     );
   }
 }
